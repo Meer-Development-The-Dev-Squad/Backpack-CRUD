@@ -35,23 +35,7 @@
         selector: "textarea.tinymce",
         skin: "dick-light",
         plugins: "image,link,media,anchor",
-        file_browser_callback : elFinderBrowser,
      });
-
-    function elFinderBrowser (field_name, url, type, win) {
-      tinymce.activeEditor.windowManager.open({
-        file: '{{ url(config('backpack.base.route_prefix').'/elfinder/tinymce4') }}',// use an absolute path!
-        title: 'elFinder 2.0',
-        width: 900,
-        height: 450,
-        resizable: 'yes'
-      }, {
-        setUrl: function (url) {
-          win.document.getElementById(field_name).value = url;
-        }
-      });
-      return false;
-    }
     </script>
     @endpush
 

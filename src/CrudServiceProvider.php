@@ -42,12 +42,6 @@ class CrudServiceProvider extends ServiceProvider
         // publish public Backpack CRUD assets
         $this->publishes([__DIR__.'/public' => public_path('vendor/backpack')], 'public');
 
-        // publish custom files for elFinder
-        $this->publishes([
-            __DIR__.'/config/elfinder.php'      => config_path('elfinder.php'),
-            __DIR__.'/resources/views-elfinder' => resource_path('views/vendor/elfinder'),
-        ], 'elfinder');
-
         // AUTO PUBLISH
         if (\App::environment('local')) {
             if ($this->shouldAutoPublishPublic()) {
@@ -79,7 +73,6 @@ class CrudServiceProvider extends ServiceProvider
         // register its dependencies
         $this->app->register(\Backpack\Base\BaseServiceProvider::class);
         $this->app->register(\Collective\Html\HtmlServiceProvider::class);
-        $this->app->register(\Barryvdh\Elfinder\ElfinderServiceProvider::class);
         $this->app->register(\Intervention\Image\ImageServiceProvider::class);
 
         // register their aliases
@@ -88,11 +81,6 @@ class CrudServiceProvider extends ServiceProvider
         $loader->alias('Form', \Collective\Html\FormFacade::class);
         $loader->alias('Html', \Collective\Html\HtmlFacade::class);
         $loader->alias('Image', \Intervention\Image\Facades\Image::class);
-
-        // map the elfinder prefix
-        if (! \Config::get('elfinder.route.prefix')) {
-            \Config::set('elfinder.route.prefix', \Config::get('backpack.base.route_prefix').'/elfinder');
-        }
     }
 
     public static function resource($name, $controller, array $options = [])
