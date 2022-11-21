@@ -23,7 +23,7 @@
         }
     ],
     "require": {
-        "backpack/base": "^0.7.15",
+        "backpack/base": "dev-main",
         "laravelcollective/html": "~5.0|^6.0",
         "livecontrol/eloquent-datatable": "dev-main",
         "doctrine/dbal": "^2.5",
@@ -63,6 +63,10 @@
         }
     },
     "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/Meer-Development-The-Dev-Squad/Backpack-Base.git"
+        },
         {
             "type": "git",
             "url": "https://github.com/Meer-Development-The-Dev-Squad/EloquentDataTable.git"
