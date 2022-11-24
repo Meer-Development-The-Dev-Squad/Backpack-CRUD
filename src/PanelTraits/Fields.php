@@ -183,7 +183,15 @@ trait Fields
      */
     public function checkIfFieldIsFirstOfItsType($field, $fields_array)
     {
+        if (!isset($field['type'])) {
+            return false;
+        }
+
         $first_field = $this->getFirstOfItsTypeInArray($field['type'], $fields_array);
+
+        if (!isset($field['name'], $first_field['name'])) {
+            return false;
+        }
 
         if ($field['name'] == $first_field['name']) {
             return true;
